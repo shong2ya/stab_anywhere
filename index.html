@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>QR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="stage">
+      <div class="hint-bar">
+        <p class="stab-hint">STAB ANYWHERE.</p>
+        <svg class="blood-pixel" width="24" height="22" viewBox="0 0 24 22" aria-hidden="true" shape-rendering="crispEdges">
+          <rect x="8" y="4" width="4" height="2" fill="#c41e3a"/>
+          <rect x="6" y="6" width="2" height="2" fill="#a81832"/>
+          <rect x="10" y="6" width="2" height="2" fill="#d42a48"/>
+          <rect x="8" y="6" width="2" height="2" fill="#b01c34"/>
+          <rect x="12" y="5" width="2" height="2" fill="#8f1428"/>
+          <rect x="4" y="7" width="2" height="2" fill="#7a1224"/>
+          <rect x="14" y="7" width="2" height="2" fill="#9c1830"/>
+          <rect x="6" y="8" width="2" height="2" fill="#4a0a14"/>
+          <rect x="12" y="8" width="2" height="2" fill="#3a0810"/>
+          <rect x="8" y="8" width="2" height="2" fill="#5c1020"/>
+          <rect x="9" y="10" width="2" height="2" fill="#a81832"/>
+          <rect x="9" y="12" width="2" height="3" fill="#8f1428"/>
+          <rect x="10" y="15" width="2" height="2" fill="#4a0a14"/>
+          <rect x="9" y="17" width="2" height="2" fill="#3d1814"/>
+          <rect x="10" y="19" width="2" height="2" fill="#2a080c"/>
+          <rect x="16" y="9" width="2" height="2" fill="#7a1224"/>
+          <rect x="17" y="11" width="2" height="2" fill="#4a0a14"/>
+          <rect x="3" y="10" width="2" height="2" fill="#8f1428"/>
+          <rect x="2" y="12" width="2" height="2" fill="#32100e"/>
+        </svg>
+      </div>
+      <div class="grid-wrap" id="grid-wrap">
+        <canvas id="blood-canvas" aria-hidden="true"></canvas>
+        <div id="grid" class="grid" aria-label="QR grid" role="grid"></div>
+      </div>
+    </main>
+
+    <dialog id="q-dialog" class="q-dialog">
+      <form method="dialog" class="q-card">
+        <div class="q-text">
+          <div class="q-en" id="q-en"></div>
+          <div class="q-ko" id="q-ko"></div>
+          <div class="q-meta" id="q-meta"></div>
+        </div>
+        <div class="q-actions">
+          <button id="btn-yes" value="yes" class="q-btn yes" type="submit">YES</button>
+          <button id="btn-no" value="no" class="q-btn no" type="submit">NO</button>
+          <button id="btn-cancel" value="cancel" class="q-btn" type="submit">Cancel</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="egg-image-dialog" class="q-dialog egg-dialog">
+      <form method="dialog" class="q-card egg-card">
+        <img id="egg-image" class="egg-image" alt="" />
+        <div class="q-actions">
+          <button class="q-btn" type="submit">OK</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="egg-media-dialog" class="q-dialog egg-dialog">
+      <form method="dialog" class="q-card egg-card">
+        <div id="egg-youtube-wrap" class="egg-youtube-wrap" hidden>
+          <a
+            id="egg-youtube-card"
+            class="egg-youtube-card"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img id="egg-youtube-thumb" class="egg-youtube-thumb" alt="YouTube" />
+            <span id="egg-youtube-label" class="egg-youtube-label">YouTube에서 보기</span>
+          </a>
+        </div>
+        <div id="egg-preview-wrap" class="egg-preview-wrap" hidden>
+          <iframe
+            id="egg-preview"
+            class="egg-preview"
+            title="미리보기"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+          <p id="egg-preview-label" class="egg-preview-label"></p>
+          <a
+            id="egg-external-link"
+            class="egg-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >새 탭에서 열기</a>
+        </div>
+        <div class="q-actions">
+          <button class="q-btn" type="submit">OK</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="complete-dialog" class="q-dialog">
+      <form method="dialog" class="q-card">
+        <div class="q-text">
+          <div class="q-en">Complete. Scan the QR with your phone.</div>
+          <div class="q-ko">완성되었습니다. 휴대폰으로 QR을 스캔하세요.</div>
+        </div>
+        <div class="q-actions">
+          <button class="q-btn" type="submit">OK</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <script src="./questions.js"></script>
+    <script src="./easter-eggs.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
