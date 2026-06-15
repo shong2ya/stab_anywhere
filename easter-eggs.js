@@ -7,14 +7,12 @@
       youtube: "3Vs25NtikCM",
     },
     emolga: {
-      image:
-        "./assets/ar31UtD4lV4VL2tAVenmjnbaXubUHt2Izru5RSCnWZQzVf9Bv-RaCmzTFOfGoYwseU48SgVbxklmixHEEjAQKw.gif",
+      image: "./assets/emolga.gif",
       imageAlt: "Emolga",
       youtube: "b4zd9PdsFcY",
     },
     tofu: {
-      image:
-        "./assets/ar31UtD4lV4VL2tAVenmjnbaXubUHt2Izru5RSCnWZQzVf9Bv-RaCmzTFOfGoYwseU48SgVbxklmixHEEjAQKw.gif",
+      image: "./assets/emolga.gif",
       imageAlt: "Emolga",
       link: {
         label: "두부 레시피",
