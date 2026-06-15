@@ -2,17 +2,17 @@
 (function (global) {
   global.EGG_TEMPLATES = {
     pachirisu: {
-      image: "./assets/image.gif",
+      image: "./image.gif",
       imageAlt: "Pachirisu",
       youtube: "3Vs25NtikCM",
     },
     emolga: {
-      image: "./assets/emolga.gif",
+      image: "./emolga.gif",
       imageAlt: "Emolga",
       youtube: "b4zd9PdsFcY",
     },
     tofu: {
-      image: "./assets/emolga.gif",
+      image: "./emolga.gif",
       imageAlt: "Emolga",
       link: {
         label: "두부 레시피",
