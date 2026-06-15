@@ -364,16 +364,45 @@ async function showYoutubeEgg(youtubeId) {
   resetEggMediaDialog();
 }
 
+function resolveAssetUrl(path) {
+  if (!path || /^https?:\/\//i.test(path)) return path;
+  const rel = String(path).replace(/^\.\//, "");
+  let p = location.pathname;
+  if (!p.endsWith("/")) {
+    if (/\.[a-z0-9]+$/i.test(p)) p = p.replace(/[^/]+$/, "");
+    else p += "/";
+  }
+  return new URL(rel, location.origin + p).href;
+}
+
+function preloadImage(path) {
+  const src = resolveAssetUrl(path);
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(src);
+    img.onerror = () => reject(new Error(`Failed to load image: ${src}`));
+    img.src = src;
+  });
+}
+
+async function showEggImage(egg) {
+  eggImageEl.style.display = "block";
+  eggImageEl.alt = egg.imageAlt || "";
+  try {
+    eggImageEl.src = await preloadImage(egg.image);
+    await eggImageEl.decode().catch(() => {});
+  } catch {
+    eggImageEl.removeAttribute("src");
+    eggImageEl.alt = "이미지를 불러올 수 없습니다";
+  }
+  await showModalDialog(eggImageDialogEl);
+  eggImageEl.removeAttribute("src");
+  eggImageEl.alt = "";
+}
+
 async function showEasterEgg(egg, onDone) {
   if (egg.image) {
-    eggImageEl.src = egg.image;
-    eggImageEl.alt = egg.imageAlt || "";
-    eggImageEl.style.display = "";
-    eggImageEl.onerror = () => {
-      eggImageEl.style.display = "none";
-    };
-    await showModalDialog(eggImageDialogEl);
-    eggImageEl.removeAttribute("src");
+    await showEggImage(egg);
   }
 
   if (egg.youtube) {
